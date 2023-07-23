@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Cards Example</title>
+</head>
+<body>
+    <div id="inputSection">
+        <h1>Enter your details</h1>
+        <form id="inputForm" onsubmit="mymethod(); return false;">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="cardsSection" style="display: none;">
+        <h1>Data saved successfully!</h1>
+        <div id="cardsContainer">
+        </div>
+    </div>
+
+    <script>
+        function mymethod() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+
+            var data = {
+                "name": name,
+                "email": email
+            };
+
+            // Save data to localStorage
+            localStorage.setItem("userData", JSON.stringify(data));
+
+            // Hide the input section and show the cards section
+            document.getElementById("inputSection").style.display = "none";
+            document.getElementById("cardsSection").style.display = "block";
+
+            // Display the saved data on cards
+            var userDataJson = localStorage.getItem("userData");
+            var userData = JSON.parse(userDataJson);
+            var cardsContainer = document.getElementById("cardsContainer");
+            cardsContainer.innerHTML = "<div class='card'><p>Name: " + userData.name + "</p><p>Email: " + userData.email + "</p></div>";
+        }
+    </script>
+
+    <style>
+        /* Styling for the cards */
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+        }
+    </style>
+</body>
+</html>
