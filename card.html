@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Page Display</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="p-8">
+  <div class="page" id="page1">
+    <h2 class="text-2xl font-bold mb-4">Page 1 Content</h2>
+    <div class="flex space-x-2">
+        <div id="inputSection">
+            <h1>Enter your details</h1>
+            <form id="inputForm" onsubmit="nextPage(); return false;">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    
+      <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onclick="previousPage()">Previous</button>
+      <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onclick="nextPage()">Next</button>
+    </div>
+  </div>
+
+  <div class="page hidden" id="page2">
+    <h2 class="text-2xl font-bold mb-4">Page 2 Content</h2>
+    <div class="flex space-x-2">
+      <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onclick="previousPage()">Previous</button>
+      <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onclick="nextPage()">Next</button>
+    </div>
+  </div>
+
+  <div class="page hidden" id="page3">
+    <h2 class="text-2xl font-bold mb-4">Page 3 Content</h2>
+    <div class="flex space-x-2">
+      <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onclick="previousPage()">Previous</button>
+      <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onclick="nextPage()">Next</button>
+    </div>
+  </div>
+  <!-- Add more pages as needed -->
+
+  <script src="script.js"></script>
+</body>
+</html>
